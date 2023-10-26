@@ -6223,51 +6223,51 @@ var devicePixelRatio = window.devicePixelRatio || 1;
 var backingStoreRatio = ((((ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio) || ctx.msBackingStorePixelRatio) || ctx.oBackingStorePixelRatio) || ctx.backingStorePixelRatio) || 1;
 
 function resize_canvas() {
-    if (user) {
-        user.cam.h = document.documentElement.clientHeight;
-        user.cam.w = document.documentElement.clientWidth;
-    }
-    var devicePixelRatio = window.devicePixelRatio || 1;
-    var backingStoreRatio = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
-    window.backingStoreRatio = ((((ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio) || ctx.msBackingStorePixelRatio) || ctx.oBackingStorePixelRatio) || ctx.backingStorePixelRatio) || 1;
+    if(user){
+user.cam.h = document.documentElement.clientHeight;
+user.cam.w = document.documentElement.clientWidth;
+}
+var devicePixelRatio = window.devicePixelRatio || 1;
+var backingStoreRatio = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
+window.backingStoreRatio = ((((ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio) || ctx.msBackingStorePixelRatio) || ctx.oBackingStorePixelRatio) || ctx.backingStorePixelRatio) || 1;
 
-    if (can.width != window.innerWidth) {
-        can.width = window.innerWidth;
-        canw = can.width;
-        canw2 = can.width / 2;
-    }
-    if (can.height != window.innerHeight) {
-        can.height = window.innerHeight;
-        canh = can.height;
-        canh2 = can.height / 2;
-    }
-    canm = {
-        x: canw2,
-        y: canh2
-    };
-    var ow = can.width;
-    var oh = can.height;
-    if (ratio_opt === -1)
-        ratio = devicePixelRatio / backingStoreRatio;
-    else
-        ratio = ratio_opt;
-    can.width = ow * ratio;
-    can.height = oh * ratio;
-    can.style.width = ow + "px";
-    can.style.height = oh + "px";
-    ctx.scale(ratio, ratio);
-    if (user) {
-        user.cam.rw = ow;
-        user.cam.rh = oh;
-    }
-    if (loader.is_run)
-        loader.update();
-    else if (ui.is_run)
-        ui.update();
-    else if (game.is_run)
-        game.update();
-    else if (scoreboard.is_run)
-        scoreboard.update();
+ if (can.width != window.innerWidth) {
+     can.width = window.innerWidth;
+     canw = can.width;
+     canw2 = can.width / 2;
+ }
+ if (can.height != window.innerHeight) {
+     can.height = window.innerHeight;
+     canh = can.height;
+     canh2 = can.height / 2;
+ }
+ canm = {
+     x: canw2,
+     y: canh2
+ };
+ var ow = can.width;
+ var oh = can.height;
+ if (ratio_opt === -1)
+     ratio = devicePixelRatio / backingStoreRatio;
+ else
+     ratio = ratio_opt;
+ can.width = ow * ratio;
+ can.height = oh * ratio;
+ can.style.width = ow + "px";
+ can.style.height = oh + "px";
+ ctx.scale(ratio, ratio);
+ if (user) {
+     user.cam.rw = ow;
+     user.cam.rh = oh;
+ }
+ if (loader.is_run)
+     loader.update();
+ else if (ui.is_run)
+     ui.update();
+ else if (game.is_run)
+     game.update();
+ else if (scoreboard.is_run)
+     scoreboard.update();
 
 };
 var game_body = document.getElementById("game_body");
