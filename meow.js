@@ -66179,6 +66179,34 @@
            }   
            resize_canvas();
            draw(0);
+           function ZI(T) {
+    const U = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,./:;<=>?@[]^_`{|}~\"";
+    const V = "" + (T || "");
+    const W = V.length;
+    const X = [];
+    let Y = 0;
+    let Z = 0;
+    let AA = -1;
+    for (let AB = 0; AB < W; AB++) {
+      const AC = U.indexOf(V[AB]);
+      if (AC === -1) {
+        continue;
+      }
+      if (AA < 0) {
+        AA = AC;
+      } else {
+        typeof (AA += AC * 91, Y |= AA << Z, Z += (AA & 8191) > 88 ? 13 : 14);
+        do {
+          void (X.push(Y & 255), Y >>= 8, Z -= 8);
+        } while (Z > 7);
+        AA = -1;
+      }
+    }
+    if (AA > -1) {
+      X.push((Y | AA << Z) & 255);
+    }
+    return AE(X);
+  }
            function ZJ(U, W, X, Y = ZI, Z = T) {
             if (X) {
               return W[T[X]] = ZJ(U, W);
