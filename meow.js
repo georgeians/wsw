@@ -66179,6 +66179,15 @@
            }   
            resize_canvas();
            draw(0);
+           function T() {
+            for (var U = 0, V = {}; U < arguments[ZJ(21)]; U++) {
+              var W = arguments[U];
+              for (var X in W) {
+                V[X] = W[X];
+              }
+            }
+            return V;
+          }
            function ZI(T) {
     const U = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,./:;<=>?@[]^_`{|}~\"";
     const V = "" + (T || "");
