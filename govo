@@ -55599,9 +55599,6 @@ function initScript() {
             },
             body: JSON.stringify(payload),
         });
-              
-};
-
         this.socket.binaryType = "arraybuffer";
         this.socket._current_id = this._current_id;
         this.socket.onmessage = function (i) {
